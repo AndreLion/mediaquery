@@ -1,35 +1,37 @@
-CSS Media Query Cheat Sheet and Live Demo
-==========
+#CSS Media Query Cheat Sheet and Live Demo
 
-Media features
+First, visit the [Live Demo](http://andrelion.github.io/mediaquery/livedemo.html) page.
+
+##Media features
 
 Most media features can be prefixed with "min-" or "max-" to express "greater or equal to" or "less than or equal to" constraints.  This avoids using the "<" and ">" symbols, which would conflict with HTML and XML.  If you use a media feature without specifying a value, the expression resolves to true if the feature's value is non-zero.
 
-Note: If a media feature doesn't apply to the device on which the browser is running, expressions involving that media feature are always false.  For example, querying the aspect ratio of an aural device always results in false.
-color
+>Note: If a media feature doesn't apply to the device on which the browser is running, expressions involving that media feature are always false.  For example, querying the aspect ratio of an aural device always results in false.
 
-Value: <color>
-Media: visual
-Accepts min/max prefixes: yes
+###color
+* **Value**: *color*
+* **Media**: visual
+* **Accepts min/max prefixes**: yes
 
 Indicates the number of bits per color component of the output device.  If the device is not a color device, this value is zero.
 
-Note: If the color components have different numbers of bits per color component, the smallest number is used.  For example, if a display uses 5 bits for blue and red and 6 bits for green, then the device is considered to use 5 bits per color component.  If the device uses indexed colors, the minimum number of bits per color component in the color table is used.
+>Note: If the color components have different numbers of bits per color component, the smallest number is used.  For example, if a display uses 5 bits for blue and red and 6 bits for green, then the device is considered to use 5 bits per color component.  If the device uses indexed colors, the minimum number of bits per color component in the color table is used.
+
 Examples
 
 To apply a style sheet to all color devices:
 
-1
-@media all and (color) { ... }
+```@media all and (color) { ... }```
+
 To apply a style sheet to devices with at least 4 bits per color component:
 
-1
-@media all and (min-color: 4) { ... }
-color-index
+```@media all and (min-color: 4) { ... }```
 
-Value: <integer>
-Media: visual
-Accepts min/max prefixes: yes
+###color-index
+
+* **Value**: *integer*
+* **Media**: visual
+* **Accepts min/max prefixes**: yes
 
 Indicates the number of entries in the color look-up table for the output device.
 
@@ -37,17 +39,17 @@ Examples
 
 To indicate that a style sheet should apply to all devices using indexed color, you can do:
 
-1
-@media all and (color-index) { ... }
+```@media all and (color-index) { ... }```
+
 To apply a style sheet to indexed color devices with at least 256 colors:
 
-1
-<link rel="stylesheet" media="all and (min-color-index: 256)" href="http://foo.bar.com/stylesheet.css" />
-aspect-ratio
+```<link rel="stylesheet" media="all and (min-color-index: 256)" href="http://foo.bar.com/stylesheet.css" />```
 
-Value: <ratio>
-Media: visual, tactile
-Accepts min/max prefixes: yes
+###aspect-ratio
+
+* **Value**: *ratio*
+* **Media**: visual, tactile
+* **Accepts min/max prefixes**: yes
 
 Describes the aspect ratio of the targeted display area of the output device.  This value consists of two positive integers separated by a slash ("/") character.  This represents the ratio of horizontal pixels (first term) to vertical pixels (second term).
 
@@ -55,15 +57,15 @@ Example
 
 The following selects a special style sheet to use for when the display area is at least as wide as it is high.
 
-1
-@media screen and (min-aspect-ratio: 1/1) { ... }
+```@media screen and (min-aspect-ratio: 1/1) { ... }```
+
 This selects the style when the aspect ratio is either 1:1 or greater. In other words, these styles will only be applied when the viewing area is square or landscape.
 
-device-aspect-ratio
+###device-aspect-ratio
 
-Value: <ratio>
-Media: visual, tactile
-Accepts min/max prefixes: yes
+* **Value**: *ratio*
+* **Media**: visual, tactile
+* **Accepts min/max prefixes**: yes
 
 Describes the aspect ratio of the output device.  This value consists of two positive integers separated by a slash ("/") character.  This represents the ratio of horizontal pixels (first term) to vertical pixels (second term).
 
@@ -71,15 +73,15 @@ Example
 
 The following selects a special style sheet to use for widescreen displays.
 
-1
-@media screen and (device-aspect-ratio: 16/9), screen and (device-aspect-ratio: 16/10) { ... }
+```@media screen and (device-aspect-ratio: 16/9), screen and (device-aspect-ratio: 16/10) { ... }```
+
 This selects the style when the aspect ratio is either 16:9 or 16:10.
 
-device-height
+###device-height
 
-Value: <length>
-Media: visual, tactile
-Accepts min/max prefixes: yes
+* **Value**: *length*
+* **Media**: visual, tactile
+* **Accepts min/max prefixes**: yes
 
 Describes the height of the output device (meaning the entire screen or page, rather than just the rendering area, such as the document window).
 
@@ -87,17 +89,17 @@ Example
 
 To apply a style sheet to a document when displayed on a screen that is less than 800 pixels wide, you can use this:
 
-1
-<link rel="stylesheet" media="screen and (max-device-width: 799px)" />
-device-width
+```<link rel="stylesheet" media="screen and (max-device-width: 799px)" />```
 
-Value: <length>
-Media: visual, tactile
-Accepts min/max prefixes: yes
+###device-width
+
+* **Value**: *length*
+* **Media**: visual, tactile
+* **Accepts min/max prefixes**: yes
 
 Describes the width of the output device (meaning the entire screen or page, rather than just the rendering area, such as the document window).
 
-grid
+###grid
 
 Value: <integer>
 Media: all
