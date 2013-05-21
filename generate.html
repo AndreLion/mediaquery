@@ -9,18 +9,25 @@
 		<textarea id="html"></textarea>
 		<script>
 			var elHtml = document.getElementById('html');
-			var i = 1 , l = 2000;
+			var i = 1 , ii, size = 1920, aspect = 32, dpi = 300, l;
 			var tab = '\t';
 			var tab2 = tab + tab;
 			var html = [],tags = [], css = [];
 			var width_tags = [tab+'<h2>width</h2>'], width_css = [tab+'/*width*/'];
 			var height_tags = [tab+'<h2>height</h2>'], height_css = [tab+'/*height*/'];
-			var devicewidth_tags = [tab+'<h2>device width</h2>'], devicewidth_css = [tab+'/*device width*/'];
-			var deviceheight_tags = [tab+'<h2>device height</h2>'], deviceheight_css = [tab+'/*device height*/'];
+			var devicewidth_tags = [tab+'<h2>device-width</h2>'], devicewidth_css = [tab+'/*device width*/'];
+			var deviceheight_tags = [tab+'<h2>device-height</h2>'], deviceheight_css = [tab+'/*device height*/'];
 			var orientation_tags = [tab+'<h2>orientation</h2>'], orientation_css = [tab+'/*orientation*/'];
+			var grid_tags = [tab+'<h2>grid</h2>'], grid_css = [tab+'/*grid*/'];
+			//var webkitdevicepixelratio_tags = [tab+'<h2>-webkit-device-pixel-ratio</h2>'], webkitdevicepixelratio_css = [tab+'/*-webkit-device-pixel-ratio*/'];
+			var media_tags = [tab+'<h2>media</h2>'], media_css = [tab+'/*media*/'], media = ['braille','embossed','handheld','print','projection','screen','speech','tty','tv'];
 			var color_tags = [tab+'<h2>color</h2>'], color_css = [tab+'/*color*/'];
 			var colorindex_tags = [tab+'<h2>color-index</h2>'], colorindex_css = [tab+'/*color-index*/'];
-			for(i=1;i<=l;i++){
+			var aspectratio_tags = [tab+'<h2>aspect-ratio</h2>'], aspectratio_css = [tab+'/*aspect ratio*/'];
+			var deviceaspectratio_tags = [tab+'<h2>device-aspect-ratio</h2>'], deviceaspectratio_css = [tab+'/*device aspect ratio*/'];
+			var monochrome_tags = [tab+'<h2>monochrome</h2>'], monochrome_css = [tab+'/*monochrome*/'];
+			var resolution_tags = [tab+'<h2>resolution</h2>'], resolution_css = [tab+'/*resolution*/'];
+			for(i=1;i<=size;i++){
 				width_tags.push(tab2+'<span class="width-'+i+'">'+i+'px</span>');
 				width_css.push(tab2+'@media (width:'+i+'px) {.width-'+i+' { display:inline; }}');
 				height_tags.push(tab2+'<span class="height-'+i+'">'+i+'px</span>');
@@ -34,23 +41,74 @@
 			orientation_tags.push(tab2+'<span class="orientation-portrait">portrait</span>');
 			orientation_css.push(tab2+'@media (orientation:landscape) {.orientation-landscape { display:inline; }}');
 			orientation_css.push(tab2+'@media (orientation:portrait) {.orientation-portrait { display:inline; }}');
+			grid_tags.push(tab2+'<span class="grid-0">0</span>');
+			grid_tags.push(tab2+'<span class="grid-1">1</span>');
+			grid_css.push(tab2+'@media (grid:0) {.grid-0{ display:inline; }}');
+			grid_css.push(tab2+'@media (grid:1) {.grid-1{ display:inline; }}');
+			/*webkitdevicepixelratio_tags.push(tab2+'<span class="webkit-device-pixel-ratio-0">0</span>');
+			webkitdevicepixelratio_tags.push(tab2+'<span class="webkit-device-pixel-ratio-1">1</span>');
+			webkitdevicepixelratio_tags.push(tab2+'<span class="webkit-device-pixel-ratio-1">2</span>');
+			webkitdevicepixelratio_css.push(tab2+'@media (-webkit-device-pixel-ratio:0) {.webkit-device-pixel-ratio-0 { display:inline; }}');
+			webkitdevicepixelratio_css.push(tab2+'@media (-webkit-device-pixel-ratio:1) {.webkit-device-pixel-ratio-1 { display:inline; }}');
+			webkitdevicepixelratio_css.push(tab2+'@media (-webkit-device-pixel-ratio:2) {.webkit-device-pixel-ratio-2 { display:inline; }}');*/
+			for(i=0,l=media.length;i<l;i++){
+				media_tags.push(tab2+'<span class="media-'+media[i]+'">'+media[i]+'</span>');
+				media_css.push(tab2+'@media '+media[i]+' {.media-'+media[i]+' { display:inline; }}');
+			}
 			colorindex_tags.push(tab2+'<span class="color-index-0">0</span>');
 			colorindex_css.push(tab2+'@media (color-index:0) {.color-index-0 { display:inline; }}');
+			monochrome_tags.push(tab2+'<span class="monochrome-0">0</span>');
+			colorindex_css.push(tab2+'@media (monochrome:0) {.monochrome-0 { display:inline; }}');
 			for(i=1;i<=10;i++){
 				var pow = Math.pow(2,i);
 				color_tags.push(tab2+'<span class="color-'+pow+'">'+pow+'</span>');
 				color_css.push(tab2+'@media (color:'+pow+') {.color-'+pow+' { display:inline; }}');
 				colorindex_tags.push(tab2+'<span class="color-index-'+pow+'">'+pow+'</span>');
 				colorindex_css.push(tab2+'@media (color-index:'+pow+') {.color-index-'+pow+' { display:inline; }}');
+				monochrome_tags.push(tab2+'<span class="monochrome-'+pow+'">'+pow+'</span>');
+				monochrome_css.push(tab2+'@media (monochrome:'+pow+') {.monochrome-'+pow+' { display:inline; }}');
 			}
+			for(i=1;i<=aspect;i++){
+				for(ii=1;ii<=aspect;ii++){
+					aspectratio_tags.push(tab2+'<span class="aspect-ratio-'+i+'-'+ii+'">'+i+'/'+ii+'</span>');
+					aspectratio_css.push(tab2+'@media (aspect-ratio:'+i+'/'+ii+') {.aspect-ratio-'+i+'-'+ii+' { display:inline; }}');
+					deviceaspectratio_tags.push(tab2+'<span class="device-aspect-ratio-'+i+'-'+ii+'">'+i+'/'+ii+'</span>');
+					deviceaspectratio_css.push(tab2+'@media (device-aspect-ratio:'+i+'/'+ii+') {.device-aspect-ratio-'+i+'-'+ii+' { display:inline; }}');
+				}
+			}
+			for(i=1;i<=dpi;i++){
+				resolution_tags.push(tab2+'<span class="resolution-'+i+'">'+i+'dpi</span>');
+				resolution_css.push(tab2+'@media (resolution:'+i+'dpi) {.resolution-'+i+' { display:inline; }}');
+			}
+			tags = tags.concat(media_tags);
+			tags.push('<br />');
 			tags = tags.concat(width_tags);
+			tags.push('<br />');
 			tags = tags.concat(height_tags);
+			tags.push('<br />');
 			tags = tags.concat(devicewidth_tags);
+			tags.push('<br />');
 			tags = tags.concat(deviceheight_tags);
+			tags.push('<br />');
 			tags = tags.concat(orientation_tags);
+			tags.push('<br />');
 			tags = tags.concat(color_tags);
+			tags.push('<br />');
 			tags = tags.concat(colorindex_tags);
+			tags.push('<br />');
+			tags = tags.concat(aspectratio_tags);
+			tags.push('<br />');
+			tags = tags.concat(deviceaspectratio_tags);
+			tags.push('<br />');
+			tags = tags.concat(grid_tags);
+			tags.push('<br />');
+			tags = tags.concat(monochrome_tags);
+			tags.push('<br />');
+			tags = tags.concat(resolution_tags);
+			//tags = tags.concat(webkitdevicepixelratio_tags);
+			//tags.push('<br />');
 
+			css = css.concat(media_css);
 			css = css.concat(width_css);
 			css = css.concat(height_css);
 			css = css.concat(devicewidth_css);
@@ -58,8 +116,14 @@
 			css = css.concat(orientation_css);
 			css = css.concat(color_css);
 			css = css.concat(colorindex_css);
+			css = css.concat(aspectratio_css);
+			css = css.concat(deviceaspectratio_css);
+			css = css.concat(grid_css);
+			css = css.concat(monochrome_css);
+			css = css.concat(resolution_css);
+			//css = css.concat(webkitdevicepixelratio_css);
 
-			html.push('<!DOCTYPE html>\n<html>\n<head>\n<title>CSS Media Query Live Demo</title>\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<style>\nh2 { display:inline; }\nspan { display:none; }\n/*css start*/');
+			html.push('<!DOCTYPE html>\n<html>\n<head>\n<title>CSS Media Query Live Demo</title>\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<style>\nh2 { display:inline; }\nh2:after{ content:\' : \'; }\nspan { display:none; }\n/*css start*/');
 			html = html.concat(css);
 			html.push('\n/*css end*/\n</style>\n</head>\n<body>\n<!--html start-->');
 			html = html.concat(tags);
