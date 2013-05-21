@@ -1,6 +1,7 @@
 #CSS Media Query Cheat Sheet and Live Demo
 
 First, visit the [Live Demo](http://andrelion.github.io/mediaquery/livedemo.html) page, or scan the qr code and visit via smartphone.
+
 ![Live Demo QRCode](http://andrelion.github.io/mediaquery/qrcode.png)
 
 ##Media features
