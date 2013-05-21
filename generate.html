@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			html,body,#html { height:100%;width:100%;margin:0; }
+		</style>
+	</head>
+	<body>
+		<textarea id="html"></textarea>
+		<script>
+			var elHtml = document.getElementById('html');
+			var i = 1 , l = 2000;
+			var tab = '\t';
+			var tab2 = tab + tab;
+			var html = [],tags = [], css = [];
+			var width_tags = [tab+'<h2>width</h2>'], width_css = [tab+'/*width*/'];
+			var height_tags = [tab+'<h2>height</h2>'], height_css = [tab+'/*height*/'];
+			var devicewidth_tags = [tab+'<h2>device width</h2>'], devicewidth_css = [tab+'/*device width*/'];
+			var deviceheight_tags = [tab+'<h2>device height</h2>'], deviceheight_css = [tab+'/*device height*/'];
+			var orientation_tags = [tab+'<h2>orientation</h2>'], orientation_css = [tab+'/*orientation*/'];
+			var color_tags = [tab+'<h2>color</h2>'], color_css = [tab+'/*color*/'];
+			var colorindex_tags = [tab+'<h2>color-index</h2>'], colorindex_css = [tab+'/*color-index*/'];
+			for(i=1;i<=l;i++){
+				width_tags.push(tab2+'<span class="width-'+i+'">'+i+'px</span>');
+				width_css.push(tab2+'@media (width:'+i+'px) {.width-'+i+' { display:inline; }}');
+				height_tags.push(tab2+'<span class="height-'+i+'">'+i+'px</span>');
+				height_css.push(tab2+'@media (height:'+i+'px) {.height-'+i+' { display:inline; }}');
+				devicewidth_tags.push(tab2+'<span class="device-width-'+i+'">'+i+'px</span>');
+				devicewidth_css.push(tab2+'@media (device-width:'+i+'px) {.device-width-'+i+' { display:inline; }}');
+				deviceheight_tags.push(tab2+'<span class="device-height-'+i+'">'+i+'px</span>');
+				deviceheight_css.push(tab2+'@media (device-height:'+i+'px) {.device-height-'+i+' { display:inline; }}');
+			}
+			orientation_tags.push(tab2+'<span class="orientation-landscape">landscape</span>');
+			orientation_tags.push(tab2+'<span class="orientation-portrait">portrait</span>');
+			orientation_css.push(tab2+'@media (orientation:landscape) {.orientation-landscape { display:inline; }}');
+			orientation_css.push(tab2+'@media (orientation:portrait) {.orientation-portrait { display:inline; }}');
+			colorindex_tags.push(tab2+'<span class="color-index-0">0</span>');
+			colorindex_css.push(tab2+'@media (color-index:0) {.color-index-0 { display:inline; }}');
+			for(i=1;i<=10;i++){
+				var pow = Math.pow(2,i);
+				color_tags.push(tab2+'<span class="color-'+pow+'">'+pow+'</span>');
+				color_css.push(tab2+'@media (color:'+pow+') {.color-'+pow+' { display:inline; }}');
+				colorindex_tags.push(tab2+'<span class="color-index-'+pow+'">'+pow+'</span>');
+				colorindex_css.push(tab2+'@media (color-index:'+pow+') {.color-index-'+pow+' { display:inline; }}');
+			}
+			tags = tags.concat(width_tags);
+			tags = tags.concat(height_tags);
+			tags = tags.concat(devicewidth_tags);
+			tags = tags.concat(deviceheight_tags);
+			tags = tags.concat(orientation_tags);
+			tags = tags.concat(color_tags);
+			tags = tags.concat(colorindex_tags);
+
+			css = css.concat(width_css);
+			css = css.concat(height_css);
+			css = css.concat(devicewidth_css);
+			css = css.concat(deviceheight_css);
+			css = css.concat(orientation_css);
+			css = css.concat(color_css);
+			css = css.concat(colorindex_css);
+
+			html.push('<!DOCTYPE html>\n<html>\n<head>\n<title>CSS Media Query Live Demo</title>\n<style>\nh2 { display:inline; }\nspan { display:none; }\n/*css start*/');
+			html = html.concat(css);
+			html.push('\n/*css end*/\n</style>\n</head>\n<body>\n<!--html start-->');
+			html = html.concat(tags);
+			html.push('\n<!--html end-->\n</body>\n</html>');
+			elHtml.value = html.join('\n');
+		</script>
+	</body>
+</html>
