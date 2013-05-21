@@ -21,11 +21,15 @@ Examples
 
 To apply a style sheet to all color devices:
 
-```@media all and (color) { ... }```
+```
+@media all and (color) { ... }
+```
 
 To apply a style sheet to devices with at least 4 bits per color component:
 
-```@media all and (min-color: 4) { ... }```
+```
+@media all and (min-color: 4) { ... }
+```
 
 ###color-index
 
@@ -39,11 +43,15 @@ Examples
 
 To indicate that a style sheet should apply to all devices using indexed color, you can do:
 
-```@media all and (color-index) { ... }```
+```
+@media all and (color-index) { ... }
+```
 
 To apply a style sheet to indexed color devices with at least 256 colors:
 
-```<link rel="stylesheet" media="all and (min-color-index: 256)" href="http://foo.bar.com/stylesheet.css" />```
+```
+<link rel="stylesheet" media="all and (min-color-index: 256)" href="http://foo.bar.com/stylesheet.css" />
+```
 
 ###aspect-ratio
 
@@ -57,7 +65,9 @@ Example
 
 The following selects a special style sheet to use for when the display area is at least as wide as it is high.
 
-```@media screen and (min-aspect-ratio: 1/1) { ... }```
+```
+@media screen and (min-aspect-ratio: 1/1) { ... }
+```
 
 This selects the style when the aspect ratio is either 1:1 or greater. In other words, these styles will only be applied when the viewing area is square or landscape.
 
@@ -73,7 +83,9 @@ Example
 
 The following selects a special style sheet to use for widescreen displays.
 
-```@media screen and (device-aspect-ratio: 16/9), screen and (device-aspect-ratio: 16/10) { ... }```
+```
+@media screen and (device-aspect-ratio: 16/9), screen and (device-aspect-ratio: 16/10) { ... }
+```
 
 This selects the style when the aspect ratio is either 16:9 or 16:10.
 
@@ -89,7 +101,9 @@ Example
 
 To apply a style sheet to a document when displayed on a screen that is less than 800 pixels wide, you can use this:
 
-```<link rel="stylesheet" media="screen and (max-device-width: 799px)" />```
+```
+<link rel="stylesheet" media="screen and (max-device-width: 799px)" />
+```
 
 ###device-width
 
@@ -101,9 +115,9 @@ Describes the width of the output device (meaning the entire screen or page, rat
 
 ###grid
 
-Value: <integer>
-Media: all
-Accepts min/max prefixes: no
+* **Value**: *integer*
+* **Media**: all
+* **Accepts min/max prefixes**: no
 
 Determines whether the output device is a grid device or a bitmap device.  If the device is grid-based (such as a TTY terminal or a phone display with only one font), the value is 1.  Otherwise it is zero.
 
@@ -111,23 +125,27 @@ Example
 
 To apply a style to handheld devices with a 15-character or narrower display:
 
-1
+```
 @media handheld and (grid) and (max-width: 15em) { ... }
-Note: The "em" unit has a special meaning for grid devices; since the exact width of an "em" can't be determined, 1em is assumed to be the width of one grid cell horizontally, and the height of one cell vertically.
-height
+```
 
-Value: <length>
-Media: visual, tactile
-Accepts min/max prefixes: yes
+>Note: The "em" unit has a special meaning for grid devices; since the exact width of an "em" can't be determined, 1em is assumed to be the width of one grid cell horizontally, and the height of one cell vertically.
+
+###height
+
+* **Value**: *length*
+* **Media**: visual, tactile
+* **Accepts min/max prefixes**: yes
 
 The height media feature describes the height of the output device's rendering surface (such as the height of the viewport or of the page box on a printer).
 
-Note: As the user resizes the window, Firefox switches style sheets as appropriate based on media queries using the width and height media features.
-monochrome
+>Note: As the user resizes the window, Firefox switches style sheets as appropriate based on media queries using the width and height media features.
 
-Value: <integer>
-Media: visual
-Accepts min/max prefixes: yes
+###monochrome
+
+* **Value**: *integer*
+* **Media**: visual
+* **Accepts min/max prefixes**: yes
 
 Indicates the number of bits per pixel on a monochrome (greyscale) device.  If the device isn't monochrome, the device's value is 0.
 
@@ -135,17 +153,21 @@ Examples
 
 To apply a style sheet to all monochrome devices:
 
-1
+```
 @media all and (monochrome) { ... }
+```
+
 To apply a style sheet to monochrome devices with at least 8 bits per pixel:
 
-1
+```
 @media all and (min-monochrome: 8) { ... }
-orientation
+```
 
-Value: landscape | portrait
-Media: visual
-Accepts min/max prefixes: no
+###orientation
+
+* **Value**: landscape | portrait
+* **Media**: visual
+* **Accepts min/max prefixes**: no
 
 Indicates whether the device is in landscape (the display is wider than it is tall) or portrait (the display is taller than it is wide) mode.
 
@@ -153,13 +175,15 @@ Example
 
 To apply a style sheet only in portrait orientation:
 
-1
+```
 @media all and (orientation: portrait) { ... }
-resolution
+```
 
-Value: <resolution>
-Media: bitmap
-Accepts min/max prefixes: yes
+###resolution
+
+* **Value**: *resolution*
+* **Media**: bitmap
+* **Accepts min/max prefixes**: yes
 
 Indicates the resolution (pixel density) of the output device.  The resolution may be specified in either dots per inch (dpi) or dots per centimeter (dpcm).
 
@@ -167,13 +191,15 @@ Example
 
 To apply a style sheet to devices with at least 300 dots per inch of resolution:
 
-1
+```
 @media print and (min-resolution: 300dpi) { ... }
-scan
+```
 
-Value: progressive | interlace
-Media: tv
-Accepts min/max prefixes: no
+###scan
+
+* **Value**: progressive | interlace
+* **Media**: tv
+* **Accepts min/max prefixes**: no
 
 Describes the scanning process of television output devices.
 
@@ -181,30 +207,36 @@ Example
 
 To apply a style sheet only to progressive scanning televisions:
 
-1
+```
 @media tv and (scan: progressive) { ... }
-width
+```
 
-Value: <length>
-Media: visual, tactile
-Accepts min/max prefixes: yes
+###width
+
+* **Value**: *length*
+* **Media**: visual, tactile
+* **Accepts min/max prefixes**: yes
 
 The width media feature describes the width of the rendering surface of the output device (such as the width of the document window, or the width of the page box on a printer).
 
-Note: As the user resizes the window, Firefox switches style sheets as appropriate based on media queries using the width and height media features.
+>Note: As the user resizes the window, Firefox switches style sheets as appropriate based on media queries using the width and height media features.
+
 Examples
 
 If you want to specify a style sheet for handheld devices, or screen devices with a width greater than 20em, you can use this query:
 
-1
+```
 @media handheld and (min-width: 20em), screen and (min-width: 20em) { ... }
+```
+
 This media query specifies a style sheet that applies to printed media wider than 8.5 inches:
 
-1
-2
-<link rel="stylesheet" media="print and (min-width: 8.5in)"
-    href="http://foo.com/mystyle.css" />
+```
+<link rel="stylesheet" media="print and (min-width: 8.5in) href="http://foo.com/mystyle.css" />
+```
+
 This query specifies a style sheet that is usable when the viewport is between 500 and 800 pixels wide:
 
-1
+```
 @media screen and (min-width: 500px) and (max-width: 800px) { ... }
+```
