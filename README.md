@@ -242,3 +242,8 @@ This query specifies a style sheet that is usable when the viewport is between 5
 ```
 @media screen and (min-width: 500px) and (max-width: 800px) { ... }
 ```
+
+
+================
+
+[♥ There are some other projects you may be interested in ♥](http://andrelion.github.io/about/)
