@@ -1,16 +1,16 @@
-#CSS Media Query Cheat Sheet and Live Demo
+# CSS Media Query Cheat Sheet and Live Demo
 
 First, visit the [Live Demo](http://andrelion.github.io/mediaquery/livedemo.html) page, or scan the qr code and visit via smartphone.
 
 ![Live Demo QRCode](http://andrelion.github.io/mediaquery/qrcode.png)
 
-##Media features
+## Media features
 
 Most media features can be prefixed with "min-" or "max-" to express "greater or equal to" or "less than or equal to" constraints.  This avoids using the "<" and ">" symbols, which would conflict with HTML and XML.  If you use a media feature without specifying a value, the expression resolves to true if the feature's value is non-zero.
 
 >Note: If a media feature doesn't apply to the device on which the browser is running, expressions involving that media feature are always false.  For example, querying the aspect ratio of an aural device always results in false.
 
-###color
+### color
 * **Value**: *color*
 * **Media**: visual
 * **Accepts min/max prefixes**: yes
@@ -33,7 +33,7 @@ To apply a style sheet to devices with at least 4 bits per color component:
 @media all and (min-color: 4) { ... }
 ```
 
-###color-index
+### color-index
 
 * **Value**: *integer*
 * **Media**: visual
@@ -55,7 +55,7 @@ To apply a style sheet to indexed color devices with at least 256 colors:
 <link rel="stylesheet" media="all and (min-color-index: 256)" href="http://foo.bar.com/stylesheet.css" />
 ```
 
-###aspect-ratio
+### aspect-ratio
 
 * **Value**: *ratio*
 * **Media**: visual, tactile
@@ -73,7 +73,7 @@ The following selects a special style sheet to use for when the display area is 
 
 This selects the style when the aspect ratio is either 1:1 or greater. In other words, these styles will only be applied when the viewing area is square or landscape.
 
-###device-aspect-ratio
+### device-aspect-ratio
 
 * **Value**: *ratio*
 * **Media**: visual, tactile
@@ -91,7 +91,7 @@ The following selects a special style sheet to use for widescreen displays.
 
 This selects the style when the aspect ratio is either 16:9 or 16:10.
 
-###device-height
+### device-height
 
 * **Value**: *length*
 * **Media**: visual, tactile
@@ -107,7 +107,7 @@ To apply a style sheet to a document when displayed on a screen that is less tha
 <link rel="stylesheet" media="screen and (max-device-width: 799px)" />
 ```
 
-###device-width
+### device-width
 
 * **Value**: *length*
 * **Media**: visual, tactile
@@ -115,7 +115,7 @@ To apply a style sheet to a document when displayed on a screen that is less tha
 
 Describes the width of the output device (meaning the entire screen or page, rather than just the rendering area, such as the document window).
 
-###grid
+### grid
 
 * **Value**: *integer*
 * **Media**: all
@@ -133,7 +133,7 @@ To apply a style to handheld devices with a 15-character or narrower display:
 
 >Note: The "em" unit has a special meaning for grid devices; since the exact width of an "em" can't be determined, 1em is assumed to be the width of one grid cell horizontally, and the height of one cell vertically.
 
-###height
+### height
 
 * **Value**: *length*
 * **Media**: visual, tactile
@@ -143,7 +143,7 @@ The height media feature describes the height of the output device's rendering s
 
 >Note: As the user resizes the window, Firefox switches style sheets as appropriate based on media queries using the width and height media features.
 
-###monochrome
+### monochrome
 
 * **Value**: *integer*
 * **Media**: visual
@@ -165,7 +165,7 @@ To apply a style sheet to monochrome devices with at least 8 bits per pixel:
 @media all and (min-monochrome: 8) { ... }
 ```
 
-###orientation
+### orientation
 
 * **Value**: landscape | portrait
 * **Media**: visual
@@ -181,7 +181,7 @@ To apply a style sheet only in portrait orientation:
 @media all and (orientation: portrait) { ... }
 ```
 
-###resolution
+### resolution
 
 * **Value**: *resolution*
 * **Media**: bitmap
@@ -197,7 +197,7 @@ To apply a style sheet to devices with at least 300 dots per inch of resolution:
 @media print and (min-resolution: 300dpi) { ... }
 ```
 
-###scan
+### scan
 
 * **Value**: progressive | interlace
 * **Media**: tv
@@ -213,7 +213,7 @@ To apply a style sheet only to progressive scanning televisions:
 @media tv and (scan: progressive) { ... }
 ```
 
-###width
+### width
 
 * **Value**: *length*
 * **Media**: visual, tactile
@@ -244,6 +244,6 @@ This query specifies a style sheet that is usable when the viewport is between 5
 ```
 
 
-================
+-------------------
 
 [♥ There are some other projects you may be interested in ♥](http://andrelion.github.io/about/)
